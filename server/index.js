@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import http from 'http';
 import path from 'path';
 import auth from './route/auth';
+import route from './route';
 require('dotenv').config();
 
 const apiVersion = express.Router();
@@ -15,6 +16,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use('/api/v1/auth', auth)
+
+app.use('/', route)
 
 let port = process.env.PORT || 5000;
 let server = http.createServer(app)
