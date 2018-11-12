@@ -15,9 +15,10 @@ app.use(express.static('asset'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.use('/', route)
 app.use('/api/v1/auth', auth)
 
-app.use('/', route)
+
 
 let port = process.env.PORT || 5000;
 let server = http.createServer(app)
