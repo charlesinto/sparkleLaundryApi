@@ -170,4 +170,50 @@ describe('Test all api end points', function(){
             })
         })
     })
+    describe('it should get laundry items',() => {
+        this.timeout(40000);
+        it('res should be an object', function(done){
+            chai.request(app).get('/api/v1/getLuandryItems').type('form').end(function(err,res){
+                expect(res).to.be.an('object');
+                done();
+            })
+        })
+        it('response.body to have property men category', function(done){
+            chai.request(app).get('/api/v1/getLuandryItems').type('form').end(function(err,res){
+                expect(res.body).to.have.property('menCategory');
+                done();
+            })
+        })
+        it('response.body to have property women cildren', function(done){
+            chai.request(app).get('/api/v1/getLuandryItems').type('form').end(function(err,res){
+                expect(res.body).to.have.property('womenCategory');
+                done();
+            })
+        })
+        it('response.body to have property children category', function(done){
+            chai.request(app).get('/api/v1/getLuandryItems').type('form').end(function(err,res){
+                expect(res.body).to.have.property('childrenCategory');
+                done();
+            })
+        })
+        it('response.body to have property otherCategory', function(done){
+            chai.request(app).get('/api/v1/getLuandryItems').type('form').end(function(err,res){
+                expect(res.body).to.have.property('otherCategory');
+                done();
+            })
+        })
+        it('response should have  status of 200',(done)=>{
+            chai.request(app).get('/api/v1/getLuandryItems').type('form').end(function(err,res){
+                
+                expect(res).to.have.status(200);
+                done();
+            })
+        })
+        it('menu should be an array', function(done){
+            chai.request(app).get('/api/v1/getLuandryItems').type('form').end(function(err,res){
+                expect(res.body.menCategory).to.be.an('array');
+                done();
+            })
+        })
+    })
 })

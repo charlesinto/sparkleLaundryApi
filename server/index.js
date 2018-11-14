@@ -4,20 +4,23 @@ import bodyParser from 'body-parser';
 import http from 'http';
 import path from 'path';
 import auth from './route/auth';
+import getImage from './route/getImage';
 import route from './route';
+import getItems from './route/getItems';
 require('dotenv').config();
 
 const apiVersion = express.Router();
 const app = express();
-app.use(express.static(path.join(__dirname, 'asset')));
-app.use(express.static('asset'));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use('/', route)
+// app.use('/', route)
 app.use('/api/v1/auth', auth)
-
+app.use('/api/v1/getLuandryItems', getItems);
+// app.use('/api/v1/fetch', getImage);
 
 
 let port = process.env.PORT || 5000;
