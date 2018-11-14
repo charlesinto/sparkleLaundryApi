@@ -40,6 +40,7 @@
     "dotenv": "^6.1.0",
     "eslint": "^5.8.0",
     "eslint-config-airbnb-base": "^13.1.0",
+    "fs": "0.0.1-security",
     "istanbul": "^0.4.5",
     "jasmine": "^3.3.0",
     "jasmine-console-reporter": "^3.1.0",
